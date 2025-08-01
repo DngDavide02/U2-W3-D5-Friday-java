@@ -31,7 +31,7 @@ public class JwtUtils {
         try {
             Jwts.parserBuilder()
                     .setSigningKey(Keys.hmacShaKeyFor(secret.getBytes()))
-                    .build().parseClaimsJwt(accessToken);
+                    .build().parseClaimsJws(accessToken);
         }catch (Exception e){
             throw new UnauthorizedException("token scaduto o non valido");
         }
@@ -41,7 +41,7 @@ public class JwtUtils {
         return Jwts.parserBuilder()
                 .setSigningKey(Keys.hmacShaKeyFor(secret.getBytes()))
                 .build()
-                .parseClaimsJwt(accessToken)
+                .parseClaimsJws(accessToken)
                 .getBody()
                 .getSubject();
     }
@@ -50,7 +50,7 @@ public class JwtUtils {
         return Jwts.parserBuilder()
                 .setSigningKey(Keys.hmacShaKeyFor(secret.getBytes()))
                 .build()
-                .parseClaimsJwt(accesToken)
+                .parseClaimsJws(accesToken)
                 .getBody()
                 .get("role", String.class);
     }

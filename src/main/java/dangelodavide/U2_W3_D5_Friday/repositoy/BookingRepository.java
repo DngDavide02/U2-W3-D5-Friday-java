@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findByUser (User user);
-    boolean existByUserAndEvent(User user, Event event);
+    boolean existsByUserAndEvent(User user, Event event);
 }
